@@ -1,5 +1,5 @@
 export interface INews {
-  id: string;
+  id: string | null;
   name: string;
   author: string;
   title: string;
@@ -8,7 +8,10 @@ export interface INews {
   urlToImage: string;
   publishedAt: string;
   content: string;
-
+  source: {
+    id: string | null;
+    name: string;
+  };
 }
 
 export interface IFavorite extends INews {
@@ -22,4 +25,11 @@ export interface IResponse<T> {
   success: boolean;
   data?: T;
   error?: any;
+}
+
+export interface INewsData {
+  articles: INews[];
+  status: string;
+  totalResults: number;
+  success: string;
 }

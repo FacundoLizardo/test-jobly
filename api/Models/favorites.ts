@@ -1,25 +1,24 @@
 import { Document, model, Schema } from "mongoose";
-import * as crypto from "crypto";
 import { z } from "zod";
 
 export const favoritesSchemaParser = z.object({
   name: z.string().optional(),
-  author: z.string(),
+  author: z.string().optional(),
   title: z.string(),
   description: z.string(),
   url: z.string().url(),
-  urlToImage: z.string().url(),
+  urlToImage: z.string().url().optional(),
   publishedAt: z.string().transform((val) => new Date(val)),
-  content: z.string(),
+  content: z.string().optional(),
   source: z.object({
     id: z.string().nullable(),
-    name: z.string()
+    name: z.string().optional()
   }).nullable()
 });
 
 export interface IFavorites extends Document {
   name: string;
-  author: string;
+  author: string | null;
   title: string;
   description: string;
   url: string;
@@ -35,16 +34,16 @@ export interface IFavorites extends Document {
 const favoriteSchema = new Schema<IFavorites>(
   {
     name: { type: String, required: false },
-    author: { type: String, required: true },
+    author: { type: String, required: false },
     title: { type: String, required: true },
     description: { type: String, required: true },
     url: { type: String, required: true },
-    urlToImage: { type: String, required: true },
-    publishedAt: { type: String, required: true },
-    content: { type: String, required: true },
+    urlToImage: { type: String, required: false },
+    publishedAt: { type: String, required: false },
+    content: { type: String, required: false },
     source: {
-      id: { type: String, default: null },
-      name: { type: String, required: true },
+      id: { type: String, default: null, required:false },
+      name: { type: String, required: false },
     }
   },
   {
