@@ -18,7 +18,6 @@ export const favoritesSchemaParser = z.object({
 });
 
 export interface IFavorites extends Document {
-  id: string;
   name: string;
   author: string;
   title: string;
@@ -35,11 +34,6 @@ export interface IFavorites extends Document {
 
 const favoriteSchema = new Schema<IFavorites>(
   {
-    id: {
-      type: String,
-      default: crypto.randomUUID,
-      unique: true,
-    },
     name: { type: String, required: false },
     author: { type: String, required: true },
     title: { type: String, required: true },

@@ -3,6 +3,7 @@ import {Request, Response} from "express";
 import {postFavoritesController} from "../Controllers/favorites/postFavoritesController";
 import {favoritesSchemaParser} from "../Models/favorites";
 import {ZodError} from "zod";
+import {deleteFavoritesController} from "../Controllers/favorites/deleteFavoritesController";
 
 const getFavorites = async (req: Request, res: Response) => {
   try {
@@ -27,7 +28,6 @@ const postFavorites = async (req: Request, res: Response) => {
 
     res.status(200).json({success: true, response});
   } catch (error: any) {
-    console.log('hubo un error')
     if (error instanceof ZodError) {
       return res.status(400).json({error: "Invalid data provided"});
     }
@@ -35,5 +35,17 @@ const postFavorites = async (req: Request, res: Response) => {
     return res.status(400).json({error: error.message});
   }
 };
+const deleteFavorites = async (req: Request, res: Response) => {
+  const {id} = req.params;
 
-export {getFavorites, postFavorites};
+  try {
+
+    const response = await deleteFavoritesController(id)
+    res.status(200).json({success: true, response});
+
+  } catch (error: any) {
+    return res.status(400).json({error: error.message});
+  }
+};
+
+export {getFavorites, postFavorites, deleteFavorites};
