@@ -1,5 +1,5 @@
 import {Schema, Document, model} from 'mongoose';
-import {uuidV4} from "mongodb/src/utils";
+import * as crypto from "crypto";
 
 interface IFavorites extends Document{
   id: string;
@@ -9,14 +9,15 @@ interface IFavorites extends Document{
   description: string;
   url: string;
   urlToImage: string;
-  publishedAt: string;
+  publishedAt: Date;
   content: string;
+  timestamps:Date;
 }
 
 const favoriteSchema= new Schema<IFavorites>({
   id: {
     type: String,
-    default: uuidV4() as string,
+    default: crypto.randomUUID,
     unique: true,
     required: true
   },
