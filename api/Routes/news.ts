@@ -1,8 +1,8 @@
-import {Router} from 'express';
-import {getNews} from "../Handlers/newsHandler";
+import { Router } from "express";
+import { getNews } from "../Handlers/newsHandler";
 
 const newsRoutes = Router();
 
-newsRoutes.get('/', getNews)
+newsRoutes.get("/", getNews);
 
 export default newsRoutes;

@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "dev": "nodemon index.ts"
+    "dev": "nodemon index.ts",
+    "format": "npx prettier . --write"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "express": "^4.19.2",
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.2",
+    "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
     "uuid": "^10.0.0",
