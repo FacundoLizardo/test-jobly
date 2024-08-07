@@ -1,7 +1,19 @@
-import {Schema, Document, model} from 'mongoose';
+import {Document, model, Schema} from 'mongoose';
 import * as crypto from "crypto";
+import {z} from "zod";
 
-interface IFavorites extends Document{
+export const favoritesSchemaParser = z.object({
+  name: z.string(),
+  author: z.string(),
+  title: z.string(),
+  description: z.string(),
+  url: z.string().url(),
+  urlToImage: z.string().url(),
+  publishedAt: z.string().transform((val) => new Date(val)),
+  content: z.string()
+});
+
+export interface IFavorites extends Document {
   id: string;
   name: string;
   author: string;
@@ -9,17 +21,15 @@ interface IFavorites extends Document{
   description: string;
   url: string;
   urlToImage: string;
-  publishedAt: Date;
+  publishedAt: string;
   content: string;
-  timestamps:Date;
 }
 
-const favoriteSchema= new Schema<IFavorites>({
+const favoriteSchema = new Schema<IFavorites>({
   id: {
     type: String,
     default: crypto.randomUUID,
     unique: true,
-    required: true
   },
   name: {type: String, required: true},
   author: {type: String, required: true},
@@ -27,7 +37,7 @@ const favoriteSchema= new Schema<IFavorites>({
   description: {type: String, required: true},
   url: {type: String, required: true},
   urlToImage: {type: String, required: true},
-  publishedAt: {type: Date, required: true},
+  publishedAt: {type: String, required: true},
   content: {type: String, required: true}
 }, {
   timestamps: true

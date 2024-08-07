@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import connectDB from './db';
 import newsRoutes from './Routes/news'
+import favoritesRoutes from "./Routes/favorites";
 
 dotenv.config();
 
@@ -18,3 +19,4 @@ app.listen(PORT, () => {
 
 // routes
 app.use('/news', newsRoutes);
+app.use('/favorites', favoritesRoutes);

@@ -1,4 +1,4 @@
-import {getNewsController} from '../Controllers/getNewsController'
+import {getNewsController} from '../Controllers/news/getNewsController'
 import {Request, Response} from 'express';
 
 const getNews = async (req: Request, res: Response) => {
