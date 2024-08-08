@@ -53,7 +53,7 @@ export function DeleteFavoriteAlertDialog({id}: DeleteFavoriteAlertDialogProps) 
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction onClick={handleDeleteFavorite}>
-            Continue
+            Eliminar
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
