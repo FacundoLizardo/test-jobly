@@ -6,7 +6,7 @@ const addFavorite = async (data: INews): Promise<IResponse<IFavorite>> => {
   try {
     return {
       success: true,
-      data: await axios.post(`${apiUrl}/favorites/new`, data),
+      data: await axios.post(`/favorites/new`, data),
     };
   } catch (error) {
     return {
