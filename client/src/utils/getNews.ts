@@ -1,22 +1,16 @@
 import { INewsData, IResponse } from "./types.ts";
+import axios from "axios";
 
 const apiUrl = import.meta.env.VITE_APP_API_URL;
 
 export const getNews = async (
-  searchInput: string
+  searchInput: string,
 ): Promise<IResponse<INewsData>> => {
   try {
-    const response = await fetch(`${apiUrl}/news?text=${encodeURIComponent(searchInput)}`);
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const result = await response.json();
-
+    const { data } = await axios.get(`${apiUrl}/news?text=${searchInput}`);
     return {
       success: true,
-      data: result.news,
+      data: data.news,
     };
   } catch (e) {
     return {

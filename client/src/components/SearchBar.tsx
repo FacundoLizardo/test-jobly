@@ -2,7 +2,7 @@ import React from 'react';
 import {IoIosSearch} from "react-icons/io";
 import {Input} from "./ui/input.tsx";
 import {toast} from "./ui/use-toast.ts";
-import {getNews} from "../utils/getNews.tsx";
+import {getNews} from "../utils/getNews.ts";
 
 interface SearchBarProps {
   setState: any;
