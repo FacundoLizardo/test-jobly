@@ -15,10 +15,10 @@ const AddFavoriteButton: React.FC<AddFavoriteButtonProps> = ({ data }) => {
 
   const handleAddFavorite = async () => {
     try {
-      const { success } = await addFavorite(data);
-      console.log({success})
+      const response = await addFavorite(data);
+
       toast({
-        title: success ? "La noticia se agregó a favoritos con éxito" : "Algo salió mal",
+        title: response.da,
         description: success ? "Dirígete a tus favoritos para poder verla" : "Lo sentimos, estamos trabajando para solucionarlo",
       });
       if (success) fetchFavorites();
