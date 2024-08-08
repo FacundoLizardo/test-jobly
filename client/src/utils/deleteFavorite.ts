@@ -1,6 +1,6 @@
 import axios from "axios";
 import {INews, IResponse} from "./types.ts";
-import {apiUrl} from "./apiUrl.ts";
+import apiUrl from "./apiUrl.ts";
 import {toast} from "../components/ui/use-toast.ts";
 
 

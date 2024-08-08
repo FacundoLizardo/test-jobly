@@ -1,6 +1,7 @@
 import axios from "axios";
 import { IFavorite, INews, IResponse } from "./types.ts";
-import {apiUrl} from "./apiUrl.ts";
+import apiUrl from "./apiUrl.ts";
+
 
 
 const addFavorite = async (data: INews): Promise<IResponse<IFavorite>> => {

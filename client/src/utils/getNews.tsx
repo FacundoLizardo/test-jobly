@@ -1,6 +1,6 @@
 import axios from "axios";
 import {INewsData, IResponse} from "./types.ts";
-import {apiUrl} from "./apiUrl.ts";
+import apiUrl from "./apiUrl.ts";
 
 export const getNews = async (
   searchInput: string,
