@@ -1,8 +1,7 @@
 import React from 'react';
 import "./App.css";
-import Search from "@/components/Search.tsx";
-import AppRoutes from "@/Routes.tsx";
-import Navigation from "@/components/Navigation.tsx";
+import AppRoutes from "./Routes.tsx";
+
 
 function App() {
   return <AppRoutes />;
