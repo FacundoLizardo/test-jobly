@@ -8,9 +8,10 @@ import { FaHeart } from "react-icons/fa";
 
 interface AddFavoriteButtonProps {
   data: INews;
+  isFavorite: boolean;
 }
 
-const AddFavoriteButton: React.FC<AddFavoriteButtonProps> = ({ data }) => {
+const AddFavoriteButton: React.FC<AddFavoriteButtonProps> = ({ data , isFavorite}) => {
   const { fetchFavorites } = useFavorites();
 
   const handleAddFavorite = async () => {
@@ -18,10 +19,10 @@ const AddFavoriteButton: React.FC<AddFavoriteButtonProps> = ({ data }) => {
       const response = await addFavorite(data);
 
       toast({
-        title: response.da,
-        description: success ? "Dirígete a tus favoritos para poder verla" : "Lo sentimos, estamos trabajando para solucionarlo",
+        title: response.message,
+        description: response.success ? "Dirígete a tus favoritos para poder verla" : "Aun puedes agregar otras noticias",
       });
-      if (success) fetchFavorites();
+      if (response.success) fetchFavorites();
     } catch (error) {
       toast({
         title: "Algo salió mal",
@@ -36,7 +37,7 @@ const AddFavoriteButton: React.FC<AddFavoriteButtonProps> = ({ data }) => {
       onClick={handleAddFavorite}
       className="group bg-transparent hover:bg-transparent transition-transform duration-300 transform"
     >
-      <FaHeart className="text-neutral-500 h-4 w-4 group-hover:text-red-500 group-hover:scale-125" />
+      <FaHeart className={`${isFavorite? 'text-red-500' :'text-neutral-500'} h-4 w-4 group-hover:text-red-500 group-hover:scale-125`} />
     </Button>
   );
 };

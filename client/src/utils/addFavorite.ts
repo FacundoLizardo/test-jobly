@@ -1,13 +1,14 @@
 import axios from "axios";
 import { IFavorite, INews, IResponse } from "./types.ts";
 const apiUrl = import.meta.env.VITE_APP_API_URL
-const addFavorite = async (newsData: INews): Promise<IResponse<IFavorite>> => {
+const addFavorite = async (data: INews): Promise<IResponse<IFavorite>> => {
   try {
-    const {data} =  await axios.post(`${apiUrl}/favorites/new`, newsData)
+    const response =  await axios.post(`${apiUrl}/favorites/new`, data)
 
     return {
-      success: data.success,
-      data: data.message,
+      success: response.data.success,
+      data: response.data.data,
+      message: response.data.message
     };
   } catch (error) {
     return {

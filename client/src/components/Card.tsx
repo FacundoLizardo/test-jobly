@@ -2,21 +2,22 @@ import React from 'react';
 import {INews} from "../utils/types.ts";
 import {useLocation} from "react-router-dom";
 import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "./ui/card.tsx";
-import DeleteFavoriteButton from "./DeleteFavoriteButton.tsx";
 import AddFavoriteButton from "./AddFavoriteButton.tsx";
+import {DeleteFavoriteAlertDialog} from "./DeleteFavoriteAlertDialog.tsx";
 
 
 
 interface ArticleCardProps {
   data: INews;
+  isFavorite:boolean
 }
 
-export default function ArticleCard({ data }: ArticleCardProps) {
+export default function ArticleCard({ data, isFavorite }: ArticleCardProps) {
   const location = useLocation();
   const currentPath = location.pathname;
 
   return (
-    <Card className=" flex flex-col justify-between w-full max-w-md hover:shadow-lg transition-shadow max-h-[500px]">
+    <Card className=" flex flex-col justify-between w-full max-w-md hover:shadow-lg transition-shadow max-h-[550px]">
       <CardHeader>
         <CardTitle>{data.title}</CardTitle>
       </CardHeader>
@@ -25,9 +26,9 @@ export default function ArticleCard({ data }: ArticleCardProps) {
       </CardContent>
       <CardFooter className="flex justify-between items-end">
         {currentPath === "/favorites" ? (
-          <DeleteFavoriteButton id={data.id ?? ""} />
+         <DeleteFavoriteAlertDialog  id={data.id ?? ""}/>
         ) : (
-          <AddFavoriteButton data={data} />
+          <AddFavoriteButton data={data} isFavorite={isFavorite}/>
         )}
         <a
           href={data.url}

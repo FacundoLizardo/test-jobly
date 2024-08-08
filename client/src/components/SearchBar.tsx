@@ -3,10 +3,11 @@ import {IoIosSearch} from "react-icons/io";
 import {Input} from "./ui/input.tsx";
 import {toast} from "./ui/use-toast.ts";
 import {getNews} from "../utils/getNews.ts";
+import {INews} from "../utils/types.ts";
 
 interface SearchBarProps {
-  setState: any;
-  setLoading: any;
+  setState:  (value: (((prevState: INews[]) => INews[]) | INews[])) => void;
+  setLoading:  (value: (((prevState: boolean) => boolean) | boolean)) => void;
 }
 
 export const SearchBar = ({setState, setLoading}: SearchBarProps) => {
@@ -33,7 +34,7 @@ export const SearchBar = ({setState, setLoading}: SearchBarProps) => {
           return res;
         }
         setLoading(false);
-        setState(res.data?.articles);
+        setState(res.data?.articles ?? []);
         return res;
       })
       .catch((error) => {
