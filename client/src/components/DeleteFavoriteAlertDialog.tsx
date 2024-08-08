@@ -51,7 +51,7 @@ export function DeleteFavoriteAlertDialog({id}: DeleteFavoriteAlertDialogProps) 
           <AlertDialogTitle>Seguro quieres eliminar esta noticia de favoritos?</AlertDialogTitle>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>Cancelar</AlertDialogCancel>
           <AlertDialogAction onClick={handleDeleteFavorite}>
             Eliminar
           </AlertDialogAction>
