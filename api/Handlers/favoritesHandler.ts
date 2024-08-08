@@ -26,7 +26,7 @@ const postFavorites = async (req: Request, res: Response) => {
 
     const response = await postFavoritesController(data);
 
-    res.status(200).json({success: response.success, response});
+    res.status(200).json({success: response.success, message: response.message});
   } catch (error: any) {
     if (error instanceof ZodError) {
       return res.status(400).json({error: "Invalid data provided"});
