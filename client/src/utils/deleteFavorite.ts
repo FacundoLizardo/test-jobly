@@ -1,9 +1,8 @@
 import axios from "axios";
 import {INews, IResponse} from "./types.ts";
-import apiUrl from "./apiUrl.ts";
 import {toast} from "../components/ui/use-toast.ts";
 
-
+const apiUrl = import.meta.env.VITE_APP_API_URL
 const deleteFavorite = async (id: string): Promise<IResponse<INews> | undefined> => {
   try {
     return {
