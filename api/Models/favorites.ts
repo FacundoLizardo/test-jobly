@@ -2,17 +2,17 @@ import { Document, model, Schema } from "mongoose";
 import { z } from "zod";
 
 export const favoritesSchemaParser = z.object({
-  name: z.string().optional(),
-  author: z.string().optional(),
+  name: z.string().optional().nullable(),
+  author: z.string().optional().nullable(),
   title: z.string(),
   description: z.string(),
-  url: z.string().url(),
-  urlToImage: z.string().url().optional(),
-  publishedAt: z.string().optional(),
-  content: z.string().optional(),
+  url: z.string(),
+  urlToImage: z.string().url().optional().nullable(),
+  publishedAt: z.string().optional().nullable(),
+  content: z.string().optional().nullable(),
   source: z.object({
-    id: z.string().nullable(),
-    name: z.string().optional()
+    id: z.string().optional().nullable(),
+    name: z.string().optional().nullable()
   }).nullable()
 });
 
