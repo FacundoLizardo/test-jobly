@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "dev": "nodemon index.ts",
-    "format": "npx prettier . --write"
+    "start": "index.ts",
+    "format": "npx prettier . --write",
+
   },
   "repository": {
     "type": "git",
