@@ -12,4 +12,9 @@ Este proyecto es una aplicación que utiliza una combinación de tecnologías mo
 Instalar las dependecias tanto del frontend (carpeta client) como el backend (carpeta api)
 
 Para poder inicializar el proyecto son necesarias las variables de entorno .env para el backend y .env.local para el frontend
+
+## Comandos de inicio
+
+- backend: npm run dev
+- frontend: npm run client
   
