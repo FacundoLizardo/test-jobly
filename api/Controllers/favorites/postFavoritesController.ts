@@ -11,7 +11,8 @@ const postFavoritesController = async (data: IFavorites) => {
     const newFavorite = new Favorite(data);
     await newFavorite.save();
 
-    return { success: true, message: "Favorito agregado con éxito", data: newFavorite};
+    return { success: true, message: "Se agrego la noticia a favoritos", data: newFavorite};
+
   } catch (error: any) {
     throw new Error(`Error creating favorite: ${error.message}`);
   }
