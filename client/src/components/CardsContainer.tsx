@@ -8,8 +8,8 @@ interface CardsContainerProps {
   loading: boolean;
 }
 
-export default function CardsContainer({ data, loading }: CardsContainerProps) {
-  console.log({data})
+export default function CardsContainer({data, loading}: CardsContainerProps) {
+
   return (
     <section
       className={`grid grid-cols-1 gap-6 p-4 sm:grid-cols-2 lg:grid-cols-3 sm:p-6 h-[700px] w-full
@@ -18,11 +18,11 @@ export default function CardsContainer({ data, loading }: CardsContainerProps) {
       {loading
         ? "Cargando..."
         : data &&
-          data.length > 0 &&
-          data.map((article: INews) => {
-            if (article.title === "[Removed]") return;
-            return <ArticleCard data={article} key={article.url} />;
-          })}
+        data.length > 0 &&
+        data.map((article: INews) => {
+          if (article.title === "[Removed]") return;
+          return <ArticleCard data={article} key={article.url}/>;
+        })}
     </section>
   );
 }

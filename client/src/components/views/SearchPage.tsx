@@ -8,9 +8,7 @@ export const SearchPage = () => {
 
   return (
     <div
-      className={
-        "flex flex-col h-full w-full items-center justify-center gap-5"
-      }
+      className={"flex flex-col h-full w-full items-center justify-center gap-5"}
     >
       <SearchBar setState={setNews} setLoading={setLoading}/>
       {

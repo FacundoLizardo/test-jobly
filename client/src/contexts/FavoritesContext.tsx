@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import React, {createContext, ReactNode, useContext, useEffect, useState,} from "react";
 import {INews} from "../utils/types.ts";
 import getFavorites from "../utils/getFavorites.ts";
 import {toast} from "../components/ui/use-toast.ts";
@@ -13,7 +7,7 @@ import {toast} from "../components/ui/use-toast.ts";
 interface FavoritesContextType {
   loading: boolean;
   favorites: INews[];
-  refetchFavorites: () => void;
+  fetchFavorites: () => void;
 }
 
 const FavoritesContext = createContext<FavoritesContextType | undefined>(
@@ -21,8 +15,8 @@ const FavoritesContext = createContext<FavoritesContextType | undefined>(
 );
 
 export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+                                                                       children,
+                                                                     }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [favorites, setFavorites] = useState<INews[]>([]);
 
@@ -46,7 +40,7 @@ export const FavoritesProvider: React.FC<{ children: ReactNode }> = ({
 
   return (
     <FavoritesContext.Provider
-      value={{ loading, favorites, refetchFavorites: fetchFavorites }}
+      value={{loading, favorites, fetchFavorites}}
     >
       {children}
     </FavoritesContext.Provider>

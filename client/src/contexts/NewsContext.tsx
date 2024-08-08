@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactNode } from "react";
+import React, {createContext, useState, ReactNode, useEffect} from "react";
 import {INews} from "../utils/types.ts";
 
 
@@ -16,6 +16,10 @@ export const NewsProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [news, setNews] = useState<INews[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    console.log({news})
+  }, [news]);
 
   return (
     <NewsContext.Provider value={{ news, setNews, loading, setLoading }}>

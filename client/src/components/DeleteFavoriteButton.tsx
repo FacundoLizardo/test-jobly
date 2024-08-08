@@ -11,12 +11,12 @@ interface DeleteFavoriteButtonProps {
 }
 
 const DeleteFavoriteButton = ({id}: DeleteFavoriteButtonProps) => {
-  const {refetchFavorites} = useFavorites();
+  const {fetchFavorites} = useFavorites();
 
   const handleDeleteFavorite = async () => {
     try {
       await deleteFavorite(id);
-      refetchFavorites();
+      fetchFavorites();
       toast({
         title: "La noticia fue eliminada de tus favoritos con exito",
       });

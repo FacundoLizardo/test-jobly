@@ -11,25 +11,25 @@ interface AddFavoriteButtonProps {
   data: INews;
 }
 
-const AddFavoriteButton = ({ data }: AddFavoriteButtonProps) => {
-  const { refetchFavorites } = useFavorites();
+const AddFavoriteButton = ({data}: AddFavoriteButtonProps) => {
+  const {fetchFavorites} = useFavorites();
   const handleAddFavorite = async () => {
     try {
-      const res = await addFavorite(data);
-      if (res.success) {
-        toast({
-          title: "La noticia se agrego a favoritos con exito",
-          description: "Dirigete a tus favoritos para poder verla",
-        });
-        refetchFavorites();
-      }
-      if(!res.success){
-        toast({
-          title: "Algo salio mal ",
-          description: "Lo sentimos, estamos trabajando para solucionarlo",
+      await addFavorite(data)
+        .then(res => {
+          res.success ?
+            toast({
+              title: "La noticia se agrego a favoritos con exito",
+              description: "Dirigete a tus favoritos para poder verla",
+            })
+            &&
+            fetchFavorites()
+            :
+            toast({
+              title: "Algo salio mal ",
+              description: "Lo sentimos, estamos trabajando para solucionarlo",
+            })
         })
-      }
-
     } catch (error: any) {
       toast({
         title: "Algo salio mal",
@@ -44,7 +44,8 @@ const AddFavoriteButton = ({ data }: AddFavoriteButtonProps) => {
       onClick={handleAddFavorite}
       className="bg-transparent hover:bg-transparent transition-transform duration-300 transform group "
     >
-      <FaHeart className="text-neutral-500 h-4 w-4 transition-transform duration-300 transform group-hover:text-red-500 group-hover:scale-125" />
+      <FaHeart
+        className="text-neutral-500 h-4 w-4 transition-transform duration-300 transform group-hover:text-red-500 group-hover:scale-125"/>
     </Button>
   );
 };
