@@ -8,7 +8,7 @@ export const favoritesSchemaParser = z.object({
   description: z.string(),
   url: z.string().url(),
   urlToImage: z.string().url().optional(),
-  publishedAt: z.string().transform((val) => new Date(val)),
+  publishedAt: z.string().optional(),
   content: z.string().optional(),
   source: z.object({
     id: z.string().nullable(),
